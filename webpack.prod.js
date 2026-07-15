@@ -25,6 +25,8 @@ module.exports = merge(common, {
     new CopyWebpackPlugin({
       patterns: [
         { from: path.resolve(__dirname, "src/model"), to: "model" },
+        { from: path.resolve(__dirname, "src/manifest.json"), to: "manifest.json" },
+        { from: path.resolve(__dirname, "src/public"), to: "public" },
       ],
     }),
     new WorkboxWebpackPlugin.GenerateSW({
