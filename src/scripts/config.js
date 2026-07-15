@@ -47,10 +47,10 @@ const FUNFACT_CONFIG = {
   },
   maxThemeLength: 30,
   promptTemplates: {
-    normal: 'Tell me a surprising and unique fun fact about {vegetable}. Make it one paragraph.',
-    funny: 'Tell me a very funny and silly fun fact about {vegetable} that will make people laugh. Make it one paragraph.',
-    professional: 'Provide a scientifically accurate and professional fun fact about {vegetable}. Make it one paragraph.',
-    casual: 'Tell me a cool and casual fun fact about {vegetable} like you are talking to a friend. Make it one paragraph.',
+    normal: 'Write exactly one short, informative, and interesting fun fact about {vegetable} vegetable. Only write about {vegetable}, do not mention any other vegetable. Answer in one or two sentences.',
+    funny: 'Write exactly one funny and silly fun fact about {vegetable} vegetable that will make people laugh. Only write about {vegetable}, do not mention any other vegetable. Answer in one or two sentences.',
+    professional: 'Write exactly one scientifically accurate and professional fun fact about {vegetable} vegetable. Only write about {vegetable}, do not mention any other vegetable. Answer in one or two sentences.',
+    casual: 'Write exactly one cool and casual fun fact about {vegetable} vegetable like you are talking to a friend. Only write about {vegetable}, do not mention any other vegetable. Answer in one or two sentences.',
   },
 };
 

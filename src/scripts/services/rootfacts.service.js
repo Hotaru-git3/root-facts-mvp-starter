@@ -63,13 +63,11 @@ class RootFactsService {
     this.isGenerating = true;
 
     try {
-      // Validasi panjang input
       const MAX_LENGTH = this.config.maxThemeLength;
       if (!vegetable || vegetable.length > MAX_LENGTH) {
         throw new Error(`Nama sayuran harus 1-${MAX_LENGTH} karakter`);
       }
 
-      // Sanitasi input (cegah prompt injection)
       const sanitized = vegetable
         .replace(/[|]{2,}/g, '')
         .replace(/[#=]{2,}/g, '')
@@ -79,20 +77,33 @@ class RootFactsService {
 
       if (!sanitized) throw new Error('Nama sayuran tidak valid');
 
-      // Pilih template prompt berdasarkan tone
       const template = this.config.promptTemplates[tone] || this.config.promptTemplates.normal;
       const prompt = template.replace('{vegetable}', sanitized);
 
       console.log('[RootFacts] Prompt:', prompt);
 
-      // Jeda kecil biar UI update
       await createDelay(100);
 
-      // Generasi teks dengan parameter yang sudah dikonfigurasi
       const result = await this.generator(prompt, this.config.generationParams);
+      const generatedText = result[0].generated_text;
+
+      // Validasi: pastiin hasil mengandung nama sayuran
+      if (!generatedText.toLowerCase().includes(sanitized.toLowerCase())) {
+        console.log('[RootFacts] Hasil tidak relevan, retry...');
+        const retryPrompt = `IMPORTANT: Write ONLY about ${sanitized} vegetable. Do NOT mention any other vegetable. Give one fun fact.`;
+        const retryResult = await this.generator(retryPrompt, this.config.generationParams);
+        const retryText = retryResult[0].generated_text;
+
+        return {
+          funFact: retryText,
+          vegetable: sanitized,
+          tone,
+          timestamp: new Date().toISOString(),
+        };
+      }
 
       return {
-        funFact: result[0].generated_text,
+        funFact: generatedText,
         vegetable: sanitized,
         tone,
         timestamp: new Date().toISOString(),
