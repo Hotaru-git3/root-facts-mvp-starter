@@ -40,17 +40,17 @@ const FUNFACT_CONFIG = {
   cdnUrl: 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2',
   dtype: 'q4',
   generationParams: {
-    max_new_tokens: 150,
+    max_new_tokens: 80,
     temperature: 0.8,
     do_sample: true,
     top_p: 0.9,
   },
   maxThemeLength: 30,
   promptTemplates: {
-    normal: 'Write exactly one short, informative, and interesting fun fact about {vegetable} vegetable. Only write about {vegetable}, do not mention any other vegetable. Answer in one or two sentences.',
-    funny: 'Write exactly one funny and silly fun fact about {vegetable} vegetable that will make people laugh. Only write about {vegetable}, do not mention any other vegetable. Answer in one or two sentences.',
-    professional: 'Write exactly one scientifically accurate and professional fun fact about {vegetable} vegetable. Only write about {vegetable}, do not mention any other vegetable. Answer in one or two sentences.',
-    casual: 'Write exactly one cool and casual fun fact about {vegetable} vegetable like you are talking to a friend. Only write about {vegetable}, do not mention any other vegetable. Answer in one or two sentences.',
+    normal: 'Write exactly one short sentence about the health benefit, nutrition, or interesting fact of {vegetable} vegetable. Do not mention any other vegetable. Only write about {vegetable}.',
+    funny: 'Write exactly one funny short sentence about the health benefit or fun fact of {vegetable} vegetable. Make it silly. Do not mention any other vegetable. Only write about {vegetable}.',
+    professional: 'Write exactly one professional short sentence about the nutrition, vitamin content, or health benefit of {vegetable} vegetable. Do not mention any other vegetable. Only write about {vegetable}.',
+    casual: 'Write exactly one casual short sentence about why {vegetable} vegetable is good for health. Do not mention any other vegetable. Only write about {vegetable}.',
   },
 };
 
