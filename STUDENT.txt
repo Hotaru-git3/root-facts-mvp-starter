@@ -1,1 +1,1 @@
-APP_URL=
+APP_URL=https://lustrous-travesseiro-402426.netlify.app/
